@@ -5,24 +5,40 @@ from django.db import models
 
 class Ciudadano(models.Model):
     GENERO= (('M', 'Masculino'),
-             ('F', 'femenino'))
+             ('F', 'femenino'),
+             ('INTERSEXUAL', 'Intersexual'),
+             ('INDEFINIDO', 'Indefinido'),
+             ('NA', 'NA'))
+    
+    DISPOSITIVO_TEC =(
+        ('Si', 'Si'),
+        ('No', 'No')
+    )
+    
+    DISPOSITIVO_TEC_CUALES =(
+        ('T movil', 'Telefono movil'),
+        ('Computador', 'Computador'),
+        ('Tablet', 'Tablet')
+    )
+
+    
     tipo_doc =  models.CharField(max_length=3)
     n_doc = models.IntegerField()
     nom = models.CharField(max_length=30)
     ape= models.CharField(max_length=50)
     sexo = models.CharField(max_length=15, choices=GENERO)
-    cel = models.CharField(max_length=20)
-    tel = models.IntegerField()
+    cel = models.CharField(max_length=20, blank=True)
+    tel = models.IntegerField(blank=True)
     mun = models.CharField(max_length=30)
-    dire = models.CharField(max_length=30)
+    dire = models.CharField(max_length=30 , blank=True)
     barrio = models.CharField(max_length=30)
     fecha_nac = models.DateField(auto_now_add=False)
     etnia = models.CharField( max_length=30)
     disc = models.CharField(max_length=30)
     estrato = models.IntegerField()
-    accs_tec= models.CharField(max_length=30)
-    cuales = models.CharField(max_length=50)
-    con_int = models.BooleanField()
+    accs_tec= models.CharField(max_length=30, choices=DISPOSITIVO_TEC)
+    cuales = models.CharField(max_length=50, choices=DISPOSITIVO_TEC_CUALES)
+    con_int = models.BooleanField(blank=True, choices=DISPOSITIVO_TEC)
     reg = models.CharField(max_length=30)
     
 class Pregunta(models.Model):

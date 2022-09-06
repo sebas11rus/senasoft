@@ -15,22 +15,16 @@ class Ciudadano(models.Model):
     cel = models.CharField(max_length=20, blank=True)
     tel = models.IntegerField(blank=True)
     mun = models.CharField(max_length=30)
-    dire = models.CharField(max_length=30 , blank=True)
+    dire = models.CharField(max_length=30, blank=True)
     barrio = models.CharField(max_length=30)
     fecha_nac = models.DateField(auto_now_add=False)
-
-
-etnia = models.CharField(max_length=30)
-disc = models.CharField(max_length=30)
-estrato = models.IntegerField()
-accs_tec = models.CharField(max_length=30)
-etnia = models.CharField(max_length=30)
-disc = models.CharField(max_length=30)
-estrato = models.IntegerField()
-accs_tec = models.CharField(max_length=30)
-cuales = models.CharField(max_length=50)
-con_int = models.BooleanField()
-reg = models.CharField(max_length=30)
+    etnia = models.CharField(max_length=30)
+    disc = models.CharField(max_length=30)
+    estrato = models.IntegerField()
+    accs_tec = models.CharField(max_length=30)
+    cuales = models.CharField(max_length=50)
+    con_int = models.BooleanField()
+    reg = models.CharField(max_length=30)
 
 
 class Pregunta(models.Model):
@@ -65,5 +59,3 @@ id_ciudadano = models.ManyToManyField(Ciudadano)
 class Certificado(models.Model):
     fecha_gen = models.DateTimeField(auto_now_add=True)
     id_sondeo = models.ForeignKey(Sondeo, on_delete=models.CASCADE)
-
-

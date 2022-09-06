@@ -25,7 +25,23 @@ class Ciudadano(models.Model):
     con_int = models.models.BooleanField()
     reg = models.CharField(max_length=30)
     
+class Pregunta(models.Model):
+    pregunta = models.CharField(max_length=50)
 
+class  Condicion(models.Model):
+    brr = models.CharField(max_length=50)
+    edad = models.models.IntegerField()
+    grupo_p = models.CharField(max_length=50)
+
+class Sondeo (models.Model):
+    tipo = models.CharField(max_length=25)
+    fecha_p = models.DateField(auto_now=False, auto_now_add=False)
+    hora_p =models.TimeField( auto_now=False, auto_now_add=False)
+    visible = models.BooleanField(default=True)
+    tematica = models.CharField(max_length=25)
+    fecha_c = models.DateField(auto_now=False, auto_now_add=False)
+    hora_c =models.TimeField( auto_now=False, auto_now_add=False)
+    img = models.ImageField(
 class Certificado(models.Model):
     a
     

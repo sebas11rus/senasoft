@@ -21,9 +21,9 @@ class Ciudadano(models.Model):
     etnia = models.CharField(max_length=30)
     disc = models.CharField(max_length=30)
     estrato = models.IntegerField()
-    accs_tec = models.CharField(max_length=30)
+    accs_tec = models.CharField(max_length=30, default=True)
     cuales = models.CharField(max_length=50)
-    con_int = models.BooleanField()
+    con_int = models.BooleanField(default=True)
     reg = models.CharField(max_length=30)
 
 

@@ -1,5 +1,6 @@
-<div> 
-    {% for ciudadanos in ciudadano %}
-        <p> {{ ciudadanos.nom }} </p>
-    {% endfor %}
-</div>
+
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+</form>

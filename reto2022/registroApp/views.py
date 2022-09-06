@@ -6,5 +6,5 @@ from .models import Ciudadano
 
 
 def registro(request):
-    ciudadano = Ciudadano.objects.all()
-    return render(request, 'registro.html', {'ciudadano': ciudadano})
+   form= RegistroForm()
+   return render(request, 'registro.html', {'form': form})

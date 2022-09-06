@@ -20,9 +20,9 @@ class Ciudadano(models.Model):
     fecha_nac = models.DateField(auto_now_add=False)
 
 
-etnia = models.models.CharField(max_length=30)
+etnia = models.CharField(max_length=30)
 disc = models.CharField(max_length=30)
-estrato = models.models.IntegerField()
+estrato = models.IntegerField()
 accs_tec = models.CharField(max_length=30)
 etnia = models.CharField(max_length=30)
 disc = models.CharField(max_length=30)

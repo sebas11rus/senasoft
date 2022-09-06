@@ -33,7 +33,7 @@ regimen = [
 class RegistroForm(forms.Form):
     tipo_doc = forms.CharField(
         label='tipo documento', widget=forms.Select(choices=tipo_doc))
-    num_doc = forms.IntegerField(label='numero documento', max_length=12)
+    num_doc = forms.IntegerField(label='numero documento')
     nombre = forms.CharField(label='nombre', max_length=50)
     apellido = forms.CharField(label='apellido', max_length=50)
     sexo = forms.CharField(label='sexo', widget=forms.Select(choices=sexo))
@@ -41,7 +41,7 @@ class RegistroForm(forms.Form):
     telefono = forms.IntegerField(label='telefono')
     municipio = forms.CharField(label='municipio', max_length=50)
     direccion = forms.CharField(label='direccion', max_length=50)
-    fecha_nac = forms.DateField(label='fecha de nacimiento', max_length=50)
+    fecha_nac = forms.DateField(label='fecha de nacimiento')
     etnia = forms.CharField(label='etnia', max_length=50)
     discapacidad = forms.CharField(label='discapacidad', max_length=50)
     estrato = forms.IntegerField(label='estrato')

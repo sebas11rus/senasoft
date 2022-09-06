@@ -41,7 +41,7 @@ class RegistroForm(forms.Form):
     telefono = forms.IntegerField(label='telefono')
     municipio = forms.CharField(label='municipio', max_length=50)
     direccion = forms.CharField(label='direccion', max_length=50)
-    fecha_nac = forms.DateField(label='fecha de nacimiento' max_length=50)
+    fecha_nac = forms.DateField(label='fecha de nacimiento', max_length=50)
     etnia = forms.CharField(label='etnia', max_length=50)
     discapacidad = forms.CharField(label='discapacidad', max_length=50)
     estrato = forms.IntegerField(label='estrato')

@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('reto2022App.urls')),
     path('registro/', include('registroApp.urls')),
+    path('administrador/', include('adminApp.urls')),
     
 ]

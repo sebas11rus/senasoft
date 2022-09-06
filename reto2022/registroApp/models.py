@@ -5,13 +5,48 @@ from django.db import models
 
 
 class Ciudadano(models.Model):
-    GENERO = (('M', 'Masculino'),
-              ('F', 'femenino'))
-    tipo_doc = models.CharField(max_length=3)
+
+    TIPO_DOC = (
+        ('C.C', 'cedula de ciudadania'),
+        ('T.I', 'tarjeta de identidad'),
+        ('C.E', 'cedula extranjera'),
+    )
+
+    SEXO = (
+        ('H', 'Hombre'),
+        ('F', 'Femenino'),
+        ('IN', 'intersexual'),
+        ('IND', 'Indifinido'),
+        ('PRE', 'Prefiere no decir'),
+    )
+
+    DISPOSITIVOS = (
+        ('S', 'Si'),
+        ('N', 'No'),
+    )
+
+    CUALES = (
+        ('M', 'Movil'),
+        ('C', ' Computador'),
+        ('T', 'Tablet'),
+        ('O', 'Otro'),
+    )
+
+    CONECTIVIDAD = (
+        ('S', 'Si'),
+        ('N', 'No'),
+    )
+
+    REGIMEN = (
+        ('SUB', 'Subsidiado'),
+        ('CON', 'Contributivo'),
+    )
+
+    tipo_doc = models.CharField(max_length=20, choices=TIPO_DOC)
     n_doc = models.IntegerField()
     nom = models.CharField(max_length=30)
     ape = models.CharField(max_length=50)
-    sexo = models.CharField(max_length=15, choices=GENERO)
+    sexo = models.CharField(max_length=15, choices=SEXO)
     cel = models.CharField(max_length=20, blank=True)
     tel = models.IntegerField(blank=True)
     mun = models.CharField(max_length=30)
@@ -21,10 +56,11 @@ class Ciudadano(models.Model):
     etnia = models.CharField(max_length=30)
     disc = models.CharField(max_length=30)
     estrato = models.IntegerField()
-    accs_tec = models.CharField(max_length=30, default=True)
-    cuales = models.CharField(max_length=50)
-    con_int = models.BooleanField(default=True)
-    reg = models.CharField(max_length=30)
+    accs_tec = models.CharField(
+        max_length=30, default=True, choices=DISPOSITIVOS)
+    cuales = models.CharField(max_length=50, choices=CUALES)
+    con_int = models.BooleanField(default=True, choices=CONECTIVIDAD)
+    reg = models.CharField(max_length=30, choices=REGIMEN)
 
 
 class Pregunta(models.Model):

@@ -8,3 +8,7 @@ from .models import Ciudadano
 def registro(request):
    form= RegistroForm()
    return render(request, 'registro.html', {'form': form})
+
+
+def GuardarRegistro(request):
+    form= Ciudadano(request.POST)

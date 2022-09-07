@@ -33,8 +33,8 @@ class Ciudadano(models.Model):
     )
 
     CONECTIVIDAD = (
-        ('S', 'Si'),
-        ('N', 'No'),
+        (True, 'Si'),
+        (False, 'No'),
     )
 
     REGIMEN = (

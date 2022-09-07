@@ -14,7 +14,20 @@ class RegistroUser(View):
         return render(request, 'login.html', {'form': form})
 
     def post(self, request):
-        if request.method == 'POST':
+        form= UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+        else:
+            return render(request, 'login.html', {'form': form})
+
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('index')
+
+
+def iniciar_sesion(request):
+    if request.method == 'POST':
             form = UserCreationForm(request.POST)
             if form.is_valid():
                 form.save()
@@ -23,12 +36,8 @@ class RegistroUser(View):
                 user = authenticate(username=username, password=password)
                 login(request, user)
                 return redirect('index')
-        else:
-            form = UserCreationForm()
-        return render(request, 'signup.html', {'form': form})
+    else:
+        form = UserCreationForm()
 
-
-def cerrar_sesion(request):
-    logout(request)
-    return redirect('index')
-
+        return render(request, 'singup.html', {'form': form})
+        

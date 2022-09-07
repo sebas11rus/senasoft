@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'bootstrap5',
     'reto2022App',
     'registroApp',
-    'adminApp',
     'loginApp',
+    'userApp',
 ]
 
 MIDDLEWARE = [

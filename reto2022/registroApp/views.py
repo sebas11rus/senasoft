@@ -6,9 +6,11 @@ from .models import Ciudadano
 
 
 def registro(request):
-   form= RegistroForm()
-   return render(request, 'registro.html', {'form': form})
+    form = RegistroForm()
+    if request.method == "POST":
+        ciudadano = Ciudadano(
+            tipo_doc=request.POST["tipo_doc"], n_doc=request.POST["n_doc"], nom=request.POST["nom"]
+            ape=request.POST["ape"],sexo=request.POST["sexo"], cel=request.POST["cel"], tel=request.POST["tel"],
+            mun=request.POST["mun"],dire=request.POST["dire"],)
 
-
-def GuardarRegistro(request):
-    form= Ciudadano(request.POST)
+    return render(request, 'registro.html', {'form': form})

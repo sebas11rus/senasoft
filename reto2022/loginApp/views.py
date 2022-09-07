@@ -19,7 +19,7 @@ class RegistroUser(View):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('/')
         else:
 
             return render(request, 'login.html', {'form': form})
@@ -27,7 +27,7 @@ class RegistroUser(View):
 
 def cerrar_sesion(request):
     logout(request)
-    return redirect('index')
+    return redirect('/')
 
 
 def iniciar_sesion(request):
@@ -39,10 +39,11 @@ def iniciar_sesion(request):
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('index')
+            return redirect('/')
         else:
             messages.error(request, 'campo invalido')
     else:
         form = UserCreationForm()
 
     return render(request, 'singup.html', {'form': form})
+    

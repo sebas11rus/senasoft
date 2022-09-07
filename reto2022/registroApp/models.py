@@ -61,11 +61,16 @@ class Ciudadano(models.Model):
     cuales = models.CharField(max_length=50, choices=CUALES)
     con_int = models.BooleanField(default=True, choices=CONECTIVIDAD)
     reg = models.CharField(max_length=30, choices=REGIMEN)
-
+    
+    def __str__(self):
+        ciudadano = '%s %s cel: %s ' % (self.nom, self.ape,self.cel)
+        return ciudadano
 
 class Pregunta(models.Model):
-    pregunta = models.CharField(max_length=50)
+    pregunta = models.CharField(max_length=250)
 
+    def __str__(self):
+        return self.pregunta
 
 class Condicion(models.Model):
     brr = models.CharField(max_length=50)
@@ -83,13 +88,21 @@ class Sondeo (models.Model):
     hora_c = models.TimeField(auto_now=False, auto_now_add=False)
     img = models.ImageField()
     hora_c = models.TimeField(auto_now=False, auto_now_add=False)
-    img = models.ImageField(upload_to="sondeo/")
+    img = models.ImageField(upload_to="sondeo/", blank=True)
     updated = models.DateTimeField(auto_now_add=True)
     id_pregunta = models.ForeignKey(Pregunta, on_delete=models.CASCADE)
     id_condicion = models.ForeignKey(Condicion, on_delete=models.CASCADE)
     id_ciudadano = models.ManyToManyField(Ciudadano)
 
-
+    def __str__(self):
+        sondeo = '%s %s' %(self.tematica, self.hora_c)
+        
+        return sondeo
+        
 class Certificado(models.Model):
     fecha_gen = models.DateTimeField(auto_now_add=True)
     id_sondeo = models.ForeignKey(Sondeo, on_delete=models.CASCADE)
+
+    def __str__(self):
+        certificado = '%s %s %s' % (Ciudadano.nombre, Ciudadano.ape, Ciudadano.updated)
+        return certificado

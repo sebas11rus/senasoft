@@ -39,16 +39,15 @@
 
     <br>
     <div>
-        {% if user.is_authenticated %}
-            <div class="float-end">
-                <span class =" shadow p-3">{{user.username}}</span>
-                <a name="" id="" class="btn btn-success" href="#" role="button">Cerrar sesion</a>
-            </div>
+        <div class="float-end">
+        {% if user.is_authenticated %}          
+            <span class =" shadow p-3">{{user.username}}</span>
+            <a name="" id="" class="btn btn-success" href="{% url 'cerrar_sesion'%}" role="button">Cerrar sesion</a>            
         {% else %}
-        <a name="" id="" class="btn btn-success" href="{% url 'login'%}" role="button">Iniciar sesion</a>
-        <a name="" id="" class="btn btn-success" href="{% url 'registro'%}" role="button">Registrarse</a>    
+            <a name="" id="" class="btn btn-success" href="{% url 'login'%}" role="button">Iniciar sesion</a>
+            <a name="" id="" class="btn btn-success" href="{% url 'singup'%}" role="button">Registrarse</a>    
         {% endif %}
-
+        </div>
     </div>
     <br>
     <br>

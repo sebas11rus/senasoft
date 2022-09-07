@@ -38,9 +38,17 @@
 
         {% comment %} Automaticamente se publicarán los sondeos recientes {% endcomment %}
 
-        <div class="border">
-            
-        </div>
+        {% for sondeo in sondeos %}
+        <article>
+            <div class="border row">            
+                <div class="col-5">            
+                            
+                </div>
+                <div class="col-7">
+                </div>
+            </div>
+        </article>
+        {% endfor %}
 
     </div>
 {% endblock  %}

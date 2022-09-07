@@ -15,6 +15,6 @@ def registro(request):
             etnia=request.POST["etnia"], disc=request.POST["disc"], estrato=request.POST["estrato"], accs_tec=request.POST["accs_tec"],
             cuales=request.POST["cuales"], con_int=request.POST["con_int"], reg=request.POST["reg"])
         ciudadano.save()
-        return redirect('index.html')
+        return redirect('index')
     else:
       return render(request, 'registro.html', {'form': form})

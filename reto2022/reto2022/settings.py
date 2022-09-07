@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'registroApp',
     'adminApp',
     'loginApp',
-    'sondeoApp',
 ]
 
 MIDDLEWARE = [

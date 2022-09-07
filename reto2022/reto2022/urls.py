@@ -24,12 +24,9 @@ urlpatterns = [
     path('registro/', include('registroApp.urls')),
     path('administrador/', include('adminApp.urls')),
     path('', include('loginApp.urls')),
-    path('sondeo/', include('sondeoApp.urls')),
     
 ]
-if settings.DEBUG:
-
-    from django.conf.urls.static import static
+if settings.DEBUG:    
 
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

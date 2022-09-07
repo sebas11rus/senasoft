@@ -24,6 +24,7 @@ urlpatterns = [
     path('registro/', include('registroApp.urls')),
     path('administrador/', include('adminApp.urls')),
     path('', include('loginApp.urls')),
+    path('sondeo/', include('sondeoApp.urls')),
     
 ]
 if settings.DEBUG:

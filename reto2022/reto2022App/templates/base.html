@@ -44,8 +44,8 @@
             <span class =" shadow p-3">{{user.username}}</span>
             <a name="" id="" class="btn btn-success" href="{% url 'cerrar_sesion'%}" role="button">Cerrar sesion</a>            
         {% else %}
-            <a name="" id="" class="btn btn-success" href="{% url 'iniciar_sesion'%}" role="button">Iniciar sesion</a>
-            <a name="" id="" class="btn btn-success" href="{% url 'login'%}" role="button">Registrarse</a>    
+            <a name="" id="" class="btn btn-success" href="{% url 'login'%}" role="button">Iniciar sesion</a>
+            <a name="" id="" class="btn btn-success" href="{% url 'iniciar_sesion'%}" role="button">Registrarse</a>    
         {% endif %}
         </div>
     </div>

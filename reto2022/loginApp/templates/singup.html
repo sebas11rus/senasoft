@@ -8,11 +8,14 @@
 {% block title %}sing up{% endblock  %}
 
 {% block content %}
-<div>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit" class="btn btn-primary">Registrarse</button>
-     </form>
+<div class="text-center">
+    <h2> Registrate </h2>
+    <div class="w-50 border mx-auto p-5 shadow-lg mt-4 "  > 
+        <form action="" method="post" class"  mx-auto">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+        </form>
+     </div>
 </div>
 {% endblock %}

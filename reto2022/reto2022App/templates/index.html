@@ -38,7 +38,7 @@
 
         {% comment %} Automaticamente se publicarán los sondeos recientes {% endcomment %}
 
-        {% for sondeo in sondeos %}
+        {% comment %} {% for sondeo in sondeos %}
         <article>
             <div class="border row">            
                 <div class="col-5">            
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </article>
-        {% endfor %}
+        {% endfor %} {% endcomment %}
 
     </div>
 {% endblock  %}

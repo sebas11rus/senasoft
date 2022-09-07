@@ -45,4 +45,4 @@ def iniciar_sesion(request):
     else:
         form = UserCreationForm()
 
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'singup.html', {'form': form})

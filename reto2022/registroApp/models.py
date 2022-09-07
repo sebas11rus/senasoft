@@ -57,7 +57,7 @@ class Ciudadano(models.Model):
     disc = models.CharField(max_length=30)
     estrato = models.IntegerField()
     accs_tec = models.CharField(
-        max_length=30, default=True, choices=DISPOSITIVOS)
+    max_length=30, default=True, choices=DISPOSITIVOS)
     cuales = models.CharField(max_length=50, choices=CUALES)
     con_int = models.BooleanField(default=True, choices=CONECTIVIDAD)
     reg = models.CharField(max_length=30, choices=REGIMEN)
@@ -80,16 +80,14 @@ class Sondeo (models.Model):
     visible = models.BooleanField(default=True)
     tematica = models.CharField(max_length=25)
     fecha_c = models.DateField(auto_now=False, auto_now_add=False)
-
-
-hora_c = models.TimeField(auto_now=False, auto_now_add=False)
-img = models.ImageField()
-hora_c = models.TimeField(auto_now=False, auto_now_add=False)
-img = models.ImageField(upload_to="sondeo/")
-updated = models.DateTimeField(auto_now_add=True)
-id_pregunta = models.ForeignKey(Pregunta, on_delete=models.CASCADE)
-id_condicion = models.ForeignKey(Condicion, on_delete=models.CASCADE)
-id_ciudadano = models.ManyToManyField(Ciudadano)
+    hora_c = models.TimeField(auto_now=False, auto_now_add=False)
+    img = models.ImageField()
+    hora_c = models.TimeField(auto_now=False, auto_now_add=False)
+    img = models.ImageField(upload_to="sondeo/")
+    updated = models.DateTimeField(auto_now_add=True)
+    id_pregunta = models.ForeignKey(Pregunta, on_delete=models.CASCADE)
+    id_condicion = models.ForeignKey(Condicion, on_delete=models.CASCADE)
+    id_ciudadano = models.ManyToManyField(Ciudadano)
 
 
 class Certificado(models.Model):

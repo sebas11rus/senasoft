@@ -15,8 +15,7 @@ def administrador(request):
 
 def nuevaPregunta(request):
     if request.method == 'POST':
-        pregunta = Pregunta(request.POST or None)        
-        pregunta=Pregunta.cleaned_data['pregunta']
-        pregunta.save()
-        return HttpResponse('Guardado correctamente')    
+        pregunta = request.POST.get('pregunta')        
+        if pregunta is not None:            
+            return HttpResponse(pregunta)
     return render(request, 'nuevaPregunta.html')

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'reto2022App',
     'registroApp',
     'adminApp',
+    'loginApp',
 ]
 
 MIDDLEWARE = [

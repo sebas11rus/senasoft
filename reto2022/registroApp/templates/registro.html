@@ -1,7 +1,25 @@
+{% extends 'base.html' %}
+
+{% load bootstrap5%}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
 
-<form action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit" class="btn btn-primary">enviar</button>
-</form>
+{% block title %}registro{% endblock %}
+
+
+{% block content %}
+
+<div class="container my-5">
+    <div class="row  text-center form-control">
+        <form action="" method="post" class="form- control ">
+            {% csrf_token %}
+            <div class=" border shadow-lg w-50 p-5 justify-content-center">
+                <table class=" text-center">{{form.as_table}}  </table>
+            </div>
+            <button type="submit" class="btn btn-success w-50 mt-5">enviar</button>
+        </form>
+    </div>
+</div>
+{% endblock  %}

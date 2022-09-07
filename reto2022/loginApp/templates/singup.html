@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load bootstrap5%}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block title %}sing up{% endblock  %}
+
+{% block content %}
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">registrarse</button>
+     </form>
+</div>
+{% endblock %}

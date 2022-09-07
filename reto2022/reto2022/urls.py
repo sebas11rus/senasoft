@@ -21,5 +21,6 @@ urlpatterns = [
     path('', include('reto2022App.urls')),
     path('registro/', include('registroApp.urls')),
     path('administrador/', include('adminApp.urls')),
+    path('autenticacion/', include('loginApp.urls')),
     
 ]

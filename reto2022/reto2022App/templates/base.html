@@ -15,44 +15,52 @@
     <title> {% block title %}  {% endblock %} </title>
 </head>
 <body>
+    
     <nav class="navbar navbar-expand-sm navbar-dark bg-success">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <div class="container ">
+            <a class="navbar-brand" href="{% url 'index'%}">Sondeos</a>
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation"></button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+                    <a class="nav-link active" href="{% url 'index'%}" aria-current="page">Inicio<span class="visually-hidden">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#">Action 1</a>
-                        <a class="dropdown-item" href="#">Action 2</a>
-                    </div>
-                </li>
-            </ul>
+                    <a class="nav-link" href="#">Sondeos</a>
+                </li>            
+                <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                </li>                            
+            </ul>        
+        </div>
         </div>
     </nav>
-    
 
+    <br>
+    <div>
+        {% if user.is_authenticated %}
+            <div class="float-end">
+                <span class =" shadow p-3">{{user.username}}</span>
+                <a name="" id="" class="btn btn-success" href="#" role="button">Cerrar sesion</a>
+            </div>
+        {% else %}
+        <a name="" id="" class="btn btn-success" href="{% url 'login'%}" role="button">Iniciar sesion</a>
+        <a name="" id="" class="btn btn-success" href="{% url 'registro'%}" role="button">Registrarse</a>    
+        {% endif %}
+
+    </div>
+    <br>
+    <br>
+    <br>
     {% block content %}
 
     {% endblock %}
 
+    <footer class="pt-3">
+        <p class="text-center">Derechos reservados.</p>
+    </footer>
 
-
-    <div class="card text-bg-dark">
-        <img src="..." class="card-img" alt="...">
-        <div class="card-img-overlay">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text">Last updated 3 mins ago</p>
-        </div>
-      </div>
 </body>
 </html>
 

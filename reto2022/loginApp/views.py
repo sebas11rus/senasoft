@@ -28,6 +28,9 @@ class RegistroUser(View):
         return render(request, 'signup.html', {'form': form})
 
 
+def singup(request):
+    return render(request, 'singup.html')
+
 def cerrar_sesion(request):
     logout(request)
     return redirect('index')

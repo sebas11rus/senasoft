@@ -88,8 +88,6 @@ class Sondeo (models.Model):
     tematica = models.CharField(max_length=25)
     fecha_c = models.DateField(auto_now=False, auto_now_add=False)
     hora_c = models.TimeField(auto_now=False, auto_now_add=False)
-    img = models.ImageField()
-    hora_c = models.TimeField(auto_now=False, auto_now_add=False)
     img = models.ImageField(upload_to="sondeo/", blank=True)
     updated = models.DateTimeField(auto_now_add=True)
     id_pregunta = models.ForeignKey(Pregunta, on_delete=models.CASCADE)

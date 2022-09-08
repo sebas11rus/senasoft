@@ -1,5 +1,3 @@
-from email import message
-from pyexpat.errors import messages
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
@@ -12,17 +10,22 @@ from django.views import View
 class RegistroUser(View):
 
     def get(self, request):
-        form = AuthenticationForm()
-        return render(request, 'login.html', {'form': form})
+        form = UserCreationForm()
+        return render(request, 'singup.html', {'form': form})
 
     def post(self, request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            usernamea = form.cleaned_data.get('username')
+            passworda = form.cleaned_data.get('password1')
+            user = authenticate(username = usernamea, password=passworda)            
+            login(self.request , user)        
+            return redirect('registro')
+            
         else:
 
-            return render(request, 'login.html', {'form': form})
+            return render(request, 'singup.html', {'form': form})
 
 
 def cerrar_sesion(request):
@@ -30,20 +33,20 @@ def cerrar_sesion(request):
     return redirect('/')
 
 
-def iniciar_sesion(request):
+def login_user(request):
+    if request.method == 'GET':
+        form = AuthenticationForm()
+        return render(request, 'login.html', {'form': form})
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            login(request, user)
-            return redirect('/')
+        form = AuthenticationForm(request=request, data = request.POST)
+        if form.is_valid(): 
+            usernamea = form.cleaned_data.get('username')
+            passworda = form.cleaned_data.get('password')
+            user = authenticate(username = usernamea, password=passworda)
+            if user is not None:
+                login(request , user)
+                return redirect('index')
+            else:
+                return HttpResponse("User not found")
         else:
-            messages.error(request, 'campo invalido')
-    else:
-        form = UserCreationForm()
-
-    return render(request, 'singup.html', {'form': form})
-    
+            return render(request, 'login.html', {'form':form})

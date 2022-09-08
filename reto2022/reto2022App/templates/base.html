@@ -16,7 +16,7 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-sm navbar-dark bg-success">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-success py-4">
         <div class="container ">
             <a class="navbar-brand" href="{% url 'index'%}">Sondeos</a>
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -27,10 +27,10 @@
                     <a class="nav-link active" href="{% url 'index'%}" aria-current="page">Inicio<span class="visually-hidden">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sondeos</a>
+                    <a class="nav-link" href="{% url 'contestar'%}">Sondeos</a>
                 </li>            
                 <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
+                    <a class="nav-link" href="/admin">admin</a>
                 </li>                            
             </ul>        
         </div>
@@ -39,13 +39,13 @@
 
     <br>
     <div>
-        <div class="float-end">
+        <div class="float-end  mx-3">
         {% if user.is_authenticated %}          
-            <span class =" shadow p-3">{{user.username}}</span>
+            <span class =" p-3">Bienvenido {{user.username}}</span>
             <a name="" id="" class="btn btn-success" href="{% url 'cerrar_sesion'%}" role="button">Cerrar sesion</a>            
         {% else %}
             <a name="" id="" class="btn btn-success" href="{% url 'login'%}" role="button">Iniciar sesion</a>
-            <a name="" id="" class="btn btn-success" href="{% url 'iniciar_sesion'%}" role="button">Registrarse</a>    
+            <a name="" id="" class="btn btn-success" href="{% url 'singup'%}" role="button">Registrarse</a>    
         {% endif %}
         </div>
     </div>

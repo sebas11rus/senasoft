@@ -1,5 +1,6 @@
 
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -61,6 +62,7 @@ class Ciudadano(models.Model):
     cuales = models.CharField(max_length=50, choices=CUALES)
     con_int = models.BooleanField(default=True, choices=CONECTIVIDAD)
     reg = models.CharField(max_length=30, choices=REGIMEN)
+    usuario = models.CharField(max_length=50)
     
     def __str__(self):
         ciudadano = '%s %s cel: %s ' % (self.nom, self.ape,self.cel)

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Contestar{% endblock  %}
+
+{% block content %}
+    <div class="container">
+        
+<H3 class="text-center">A continuacion podrás encontrar las encuestas que puedes contestar </h3>
+    <div class="row mt-5">
+        {% for sondeo in sondeos %}           
+     <div class="card border-primary col-3">
+       <img class="card-img-top mt-1" src="{{sondeo.img.url}}" alt="Title">
+       <div class="card-body">
+            <h4 class="card-title">{{sondeo.tipo}}</h4>
+            <p>Fecha de cierre:{{sondeo.fecha_c}}</p>
+            <p>Hora cierre: {{sondeo.hora_c}}</p>
+            <p>Tematica: {{sondeo.tematica}}</p>
+            <a name="" id="" class="btn btn-success" {% if user.is_authenticated %} href="{% url 'contestar'%}" {%else%} href="{%url 'singup'%} {%endif%}" role="button">contestar</a>                        
+       </div>         
+       <div class="col1">
+       </div>
+    {% endfor %}
+    </div>
+    </div>
+{% endblock  %}

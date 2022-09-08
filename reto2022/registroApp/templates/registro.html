@@ -13,12 +13,12 @@
 
 <div class="container my-5">
     <div class="row  text-center form-control">
-        <form action="" method="post" class="form- control ">
+        <form action="" method="post" class="form- control  ">
             {% csrf_token %}
-            <div class=" border shadow-lg w-50 p-5 justify-content-center">
-                <table class=" text-center">{{form.as_table}}  </table>
+            <div class=" border shadow-lg p-5 mx-auto " style="max-width: 400px">
+                {%bootstrap_form form%}
             </div>
-            <button type="submit" class="btn btn-success w-50 mt-5">enviar</button>
+            <button type="submit" class="btn btn-success w-50 mt-5" style="max-width: 200px">enviar</button>
         </form>
     </div>
 </div>

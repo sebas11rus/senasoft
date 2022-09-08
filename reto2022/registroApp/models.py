@@ -27,7 +27,7 @@ class Ciudadano(models.Model):
     )
 
     CUALES = (
-        ('N', 'Ninguno')
+        ('N', 'Ninguno'),
         ('M', 'Movil'),
         ('C', ' Computador'),
         ('T', 'Tablet'),
@@ -76,11 +76,41 @@ class Pregunta(models.Model):
         return self.pregunta
 
 class Condicion(models.Model):
-    BARRIO = A
-    brr = models.CharField(max_length=50, blank=True, null=True)
-    edad = models.IntegerField(blank=True, null=True)
-    grupo_p = models.CharField(blank=True, null=True)
+    # Crea una seleccion de todos los barrios registrados para hacer el filtro
+    BARRIOS = Ciudadano.objects.values('barrio').distinct()    
+    SELECCION_BARRIO=[]    
+    for barrio in BARRIOS:        
+        SELECCION_BARRIO.append(('%s'%barrio,'%s'%barrio))
+        
+    RANGO_EDADES = (('Mayor que','Mayor que'),
+                    ('Menor que','Menor que'))
 
+# Crea una seleccion de todos los etnias registrados para hacer el filtro
+    etnias = Ciudadano.objects.values('etnia').distinct()    
+    GRUPO_POBLACIONAL=[]    
+    for etnia in etnias:
+        GRUPO_POBLACIONAL.append(('%s'%etnia,'%s'%etnia))
+
+    
+    brr = models.CharField(max_length=255,blank=True, null=True, choices= SELECCION_BARRIO)
+    rango_edad = models.CharField(max_length=255, blank=True, null=True, choices= RANGO_EDADES)
+    edad = models.IntegerField( blank=True, null=True)
+    grupo_p = models.CharField(max_length=255 , blank=True, null=True, choices=GRUPO_POBLACIONAL)
+
+    def __str__(self):
+        # condicion = " %s %s %s %s" % (self.brr[10,-1], (self.rango_edad,self.edad[10,-1]),self.brr[10,-1])
+        condicion =" "
+        barri=""
+        edad=""
+        grupo=""
+        if self.brr:
+            barri ="Ciudad: %s" % (self.brr[11:-2])
+        if self.edad:
+            edad = "Edad: %s %s" %(self.rango_edad,str(self.edad))
+        if self.grupo_p:
+            grupo = "grupo: %s" % (self.grupo_p[11:-2])
+            
+        return (barri, grupo, edad) 
 
 class Sondeo (models.Model):
     tipo = models.CharField(max_length=25)
@@ -108,3 +138,14 @@ class Certificado(models.Model):
     def __str__(self):
         certificado = '%s %s %s' % (Ciudadano.nombre, Ciudadano.ape, Ciudadano.updated)
         return certificado
+    
+class Respuesta(models.Model):
+    respuesta = models.CharField(max_length=255)
+    id_sondeo = models.ForeignKey(Sondeo, on_delete=models.CASCADE)
+    id_ciudadano = models.ForeignKey(Ciudadano, on_delete=models.CASCADE)
+    contestado = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    
+    def __str__(self):
+        ciudadano = Ciudadano.objects.filter(id=self.id_ciudadano)
+        respuesta = "%s %s" %(self.radicado, self.id_ciudadano)
+        return respuesta

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from registroApp.models import Sondeo
+from registroApp.models import Sondeo,Pregunta
 # Create your views here.
 
 def index(request):
@@ -12,3 +12,9 @@ def contestar(request):
 
 def error(request):
     return render(request, 'error.html')
+
+def pregunta(request,id):
+    pregunta= Pregunta.objects.filter(request=id)
+    return render(request, 'pregunta.html')
+
+

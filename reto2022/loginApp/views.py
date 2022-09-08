@@ -45,7 +45,7 @@ def login_user(request):
             user = authenticate(username = usernamea, password=passworda)
             if user is not None:
                 login(request , user)
-                return redirect('index')
+                return redirect('user')
             else:
                 return HttpResponse("User not found")
         else:

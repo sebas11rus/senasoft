@@ -40,8 +40,8 @@ class Ciudadano(models.Model):
     )
 
     REGIMEN = (
-        ('SUB', 'Subsidiado'),
-        ('CON', 'Contributivo'),
+        ('Subsidiado', 'Subsidiado'),
+        ('Contributivo', 'Contributivo'),
     )
 
     tipo_doc = models.CharField(max_length=20, choices=TIPO_DOC)
@@ -98,19 +98,18 @@ class Condicion(models.Model):
     grupo_p = models.CharField(max_length=255 , blank=True, null=True, choices=GRUPO_POBLACIONAL)
 
     def __str__(self):
-        # condicion = " %s %s %s %s" % (self.brr[10,-1], (self.rango_edad,self.edad[10,-1]),self.brr[10,-1])
-        condicion =" "
+        #     condicion = " %s %s %s %s" % (self.brr[10,-1], (self.rango_edad,self.edad[10,-1]),self.brr[10,-1])        
+        condicion=""
         barri=""
-        edad=""
+    #     edad=""
         grupo=""
         if self.brr:
-            barri ="Ciudad: %s" % (self.brr[11:-2])
-        if self.edad:
-            edad = "Edad: %s %s" %(self.rango_edad,str(self.edad))
-        if self.grupo_p:
-            grupo = "grupo: %s" % (self.grupo_p[11:-2])
-            
-        return (barri, grupo, edad) 
+            barri ="Ciudad: %s" % (self.brr[12:-2])
+        #     if self.edad:
+        #         edad = "Edad: %s %s" %(self.rango_edad,str(self.edad))
+            # if self.grupo_p:
+            #     grupo = "grupo: %s" % (self.grupo_p[13:-2])                
+        return (barri) 
 
 class Sondeo (models.Model):
     tipo = models.CharField(max_length=25)
@@ -127,8 +126,7 @@ class Sondeo (models.Model):
     
 
     def __str__(self):
-        sondeo = '%s %s' %(self.tematica, self.hora_c)
-        
+        sondeo = '%s' %(self.tipo)        
         return sondeo
         
 class Certificado(models.Model):

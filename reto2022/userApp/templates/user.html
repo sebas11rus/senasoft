@@ -1,18 +1,66 @@
 {%extends 'base.html'%}
-
+{% load static %}
 {%block title%} Usuario {%endblock%}
 
 {%block content%} 
-    <div class="container">
+    <div class="mx-5">
         <div class="row">
-            <div class="col-4 border">
-                <h3>{{user.username}}</h3>
+            <div class="col-4  rounded">
+                <img src="{% static "img/carousel.jpg" %}" class="w-100 mt-2">                
+
+                {% for dato in datos %}
+                <h4 class="text-center my-2"> {{dato.nom}}  {{dato.ape}}</h4>
+                <h5>Datos personales</h5>
+                <p>
+                    Celular: {{dato.cel}}
+                    <br>
+                    Municipio: {{dato.mun}}
+                    <br>
+                    Barrio: {{dato.barrio}}
+                    <br>
+                    Direccion: {{dato.dire}}
+                    <br>
+                    Fecha nacimiento: {{dato.fecha_nac}}
+                    <br>
+                    Etnia: {{dato.etnia}}
+                    <br>
+                    Estrato: {{dato.estrato}}
+                    <br>
+                    Regimen: {{dato.reg}}
+                    <br>                    
+                </p>
+                {% endfor %}
+                
+                
             </div>
-            <div class="col-1 border">
+            <div class="col-1">
+                {{nombre}}
             </div>
             <div class="col-6 border">
-                <p>descripcion</p>
+                
+            {% for sondeo in sondeos %}
+            <article class = "my-4">
+                <div class="row">                    
+                    <div class="col-6">
+                        {% if sondeo.img %}
+                            <img class="card-img-top my-auto" src="{{sondeo.img.url}}" alt="Title">
+                        {% else %}
+                            <img class="card-img-top my-auto" src="{% static 'img/carousel.jpg'%}" alt="Title">
+                        {% endif %}
+                    </div>
+                    <div class="col-6">
+                        <h4 class="card-title">{{sondeo.tipo}}</h4>
+                        <p>Fecha de cierre:{{sondeo.fecha_c}}</p>
+                        <p>Hora cierre: {{sondeo.hora_c}}</p>
+                        <p>Tematica: {{sondeo.tematica}}</p>                        
+                        <a name="" id="" class="btn btn-success" {% if user.is_authenticated %} href="{% url 'contestar'%}" {%else%} href="{%url 'singup'%} {%endif%}" role="button">contestar</a>                        
+                    </div>
+                </div>
+            </article>
+            {% endfor %}                                    
             </div>
         </div>
     </div>
+
+    
 {%endblock%}

@@ -4,13 +4,6 @@ from .forms import RegistroForm
 from .models import Ciudadano
 from django.contrib.auth.models import User
 
-#  
-
-# from django.template.loader import render_to_string
-
-# from weasyprint import *
-
-# Create your views here.
 
 
 def registro(request):
@@ -28,18 +21,3 @@ def registro(request):
     else:
         return render(request, 'registro.html', {'form': form})
 
-
-# def get( request):
-
-#     response = HttpResponse(content_type='application/pdf')
-
-#     buffer = BytesIO()
-
-#     pdf = canvas.Canvas(buffer)
-#     pdf.showPage()
-#     pdf.save()
-#     pdf = buffer.getvalue()
-#     buffer.close()
-#     response.write(pdf)
-
-#     return  response

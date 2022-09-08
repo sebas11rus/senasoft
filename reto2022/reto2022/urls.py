@@ -23,8 +23,7 @@ urlpatterns = [
     path('', include('reto2022App.urls')),
     path('registro/', include('registroApp.urls')),
     path('', include('loginApp.urls')),
-    path('', include('userApp.urls')),
-    
+    path('', include('userApp.urls')),  
 ]
 if settings.DEBUG:    
 

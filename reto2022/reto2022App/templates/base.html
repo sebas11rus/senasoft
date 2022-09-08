@@ -41,7 +41,7 @@
     <div>
         <div class="float-end  mx-3">
         {% if user.is_authenticated %}          
-            <span class =" p-3">Bienvenido {{user.username}}</span>
+            <span>Bienvenido </span><a class =" p-3" href="{%url 'user'%}">{{user.username}}</a>
             <a name="" id="" class="btn btn-success" href="{% url 'cerrar_sesion'%}" role="button">Cerrar sesion</a>            
         {% else %}
             <a name="" id="" class="btn btn-success" href="{% url 'login'%}" role="button">Iniciar sesion</a>

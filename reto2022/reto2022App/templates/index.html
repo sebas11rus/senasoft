@@ -46,7 +46,11 @@
         {% for sondeo in sondeos %}             
             {% if sondeo.visible %}
             <div class="card border-primary col-3 sm-auto">
+                {% if sondeo.img %}
                 <img class="card-img-top mt-1" src="{{sondeo.img.url}}" alt="Title">
+                {% else %}
+                <img class="card-img-top mt-1" src="{% static 'img/carousel.jpg'%}" alt="Title">
+                {% endif %}
                 <div class="card-body">
                      <h4 class="card-title">{{sondeo.tipo}}</h4>
                      <p>Fecha de cierre:{{sondeo.fecha_c}}</p>

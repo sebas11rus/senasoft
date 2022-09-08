@@ -27,6 +27,7 @@ class Ciudadano(models.Model):
     )
 
     CUALES = (
+        ('N', 'Ninguno')
         ('M', 'Movil'),
         ('C', ' Computador'),
         ('T', 'Tablet'),
@@ -75,9 +76,10 @@ class Pregunta(models.Model):
         return self.pregunta
 
 class Condicion(models.Model):
-    brr = models.CharField(max_length=50)
-    edad = models.IntegerField()
-    grupo_p = models.CharField(max_length=50)
+    BARRIO = A
+    brr = models.CharField(max_length=50, blank=True, null=True)
+    edad = models.IntegerField(blank=True, null=True)
+    grupo_p = models.CharField(blank=True, null=True)
 
 
 class Sondeo (models.Model):
@@ -88,13 +90,11 @@ class Sondeo (models.Model):
     tematica = models.CharField(max_length=25)
     fecha_c = models.DateField(auto_now=False, auto_now_add=False)
     hora_c = models.TimeField(auto_now=False, auto_now_add=False)
-    img = models.ImageField()
-    hora_c = models.TimeField(auto_now=False, auto_now_add=False)
     img = models.ImageField(upload_to="sondeo/", blank=True)
     updated = models.DateTimeField(auto_now_add=True)
     id_pregunta = models.ForeignKey(Pregunta, on_delete=models.CASCADE)
     id_condicion = models.ForeignKey(Condicion, on_delete=models.CASCADE)
-    id_ciudadano = models.ManyToManyField(Ciudadano)
+    
 
     def __str__(self):
         sondeo = '%s %s' %(self.tematica, self.hora_c)
